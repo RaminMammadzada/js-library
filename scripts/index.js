@@ -1,8 +1,9 @@
 class Book {
-    constructor(title, author, pages){
+    constructor(title, author, pages, isRead){
         this.title = title;
         this.author = author;
-        this.pages= pages;
+        this.pages = pages;
+        this.isRead = isRead;
     }
 }
 
@@ -27,8 +28,8 @@ class Library{
 
 let myLibrary = new Library();
 
-let newBook1 = new Book("Javascript", "Prof. Ramin, Prof. Peris", 34)
-myLibrary.addBookToLibrary(newBook1);
+// let newBook1 = new Book("Javascript", "Prof. Ramin, Prof. Peris", 34)
+// myLibrary.addBookToLibrary(newBook1);
 // let newBook2 = new Book("Python", "Prof. Muge, Prof. Peris")
 // myLibrary.addBookToLibrary(newBook2);
 
@@ -36,34 +37,46 @@ myLibrary.addBookToLibrary(newBook1);
 
 
 let submitButton = document.getElementById("my_button");
-insertHead();
 submitButton.onclick = function() {
     let bookTitleView = document.getElementById("book_title");
     let bookAuthorView = document.getElementById("book_author");
-    let bookPages = document.getElementById('pagesInput')
+    let bookPagesView = document.getElementById('book_pages');
+    let bookIsReadView = document.getElementById('book_isread').checked;
 
-    let currentBook = new Book(bookTitleView.value, bookAuthorView.value);
-
-    
-    // myLibrary.books.forEach((book) =>{  
-    //  document.getElementById("name").innerHTML = book.title;
-    //  document.getElementById("author").innerHTML = book.author;
-         
-    // }); 
+    console.log(`HERE is ISREAD: ${bookIsReadView}`);
+    let currentBook = new Book(bookTitleView.value, bookAuthorView.value, bookPagesView.value, bookIsReadView);
    
     myLibrary.addBookToLibrary(currentBook);  
-    insertRow(currentBook);
-    // displayTable()  
+
+    removeTableElements();
+    displayTable()
 
   
     // myLibrary.printAllBooks();
+    // console.log(myLibrary);
+}
+
+function removeTableElements(){
+    const table1 = document.getElementById('myTable');  
+    console.log(table1)
+
+    if(table1 !== null) {
+        table1.removeChild(table1.firstChild);
+    }
+}
+
+function displayTable() {
     
+    insertHead();
+
+    myLibrary.books.forEach((book, index) =>{  
+        insertRow(book);
+    });
 }
 
 function insertHead(){
     const table1= document.getElementById('myTable');   
-    const header = table1.createTHead();
-    const row1 = header.insertRow(0);
+    const row1 = table1.insertRow(0);
     const cell2 = row1.insertCell(0);
     cell2.innerHTML = "<b>Title</b>";
     const cell3 = row1.insertCell(1);
@@ -75,15 +88,15 @@ function insertHead(){
 
 }
 function insertRow(book){
-    const table= document.getElementById('myTable');    
+    const table = document.getElementById('myTable');
     const row = table.insertRow(1);
-    const cell= row.insertCell(0);
-    const cell1= row.insertCell(1);
-    const cell2= row.insertCell(2);
-    const cell3= row.insertCell(3);
-    cell.innerHTML = book.title;
-    cell1.innerHTML = book.author ;
-    cell2.innerHTML= book.pages;
-    cell3.innerHTML= book.isRead;
+    const cell0 = row.insertCell(0);
+    const cell1 = row.insertCell(1);
+    const cell2 = row.insertCell(2);
+    const cell3 = row.insertCell(3);
+    cell0.innerHTML = book.title;
+    cell1.innerHTML = book.author;
+    cell2.innerHTML = book.pages;
+    cell3.innerHTML = book.isRead;
 };
 
