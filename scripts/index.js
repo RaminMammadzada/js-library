@@ -5,42 +5,48 @@ class Book {
     }
 }
 
-let myLibrary = [];
-function addBookToLibrary(book) {
-    myLibrary.push(book);
+class Library{
+    constructor(){
+        this.books = [];
+    }
+
+    addBookToLibrary(book) {
+        this.books.push(book);
+        alert(`I am adding book with title ${book.title}.`)
+    }
+
+    printAllBooks(){
+        for(let i = 0; i < this.books.length; i++) {
+            console.log( this.books[i].author );
+            console.log( this.books[i].title );
+            console.log("- - - -")
+        }
+    }
 }
 
+let myLibrary = new Library();
+
 let newBook1 = new Book("Javascript", "Prof. Ramin, Prof. Peris")
-addBookToLibrary(newBook1);
-
+myLibrary.addBookToLibrary(newBook1);
 let newBook2 = new Book("Python", "Prof. Muge, Prof. Peris")
-addBookToLibrary(newBook2);
+myLibrary.addBookToLibrary(newBook2);
 
 
 
 
-let bookTitleView = document.getElementById("book_title");
-let bookAuthorView = document.getElementById("book_author");
-let submitButton = document.getElementById('myButton');
+let submitButton = document.getElementById("my_button");
 
-// submitButton.addEventListener("click", () => {
-//     console.log(bookTitleView.value);
-//     console.log(bookAuthorView.value);
-// });
+submitButton.onclick = function() {
+    let bookTitleView = document.getElementById("book_title");
+    let bookAuthorView = document.getElementById("book_author");
 
-submitButton.addEventListener("click", () => {
     let currentBook = new Book(bookTitleView.value, bookAuthorView.value);
-    addBookToLibrary(currentBook);
+
+    document.getElementById("name").innerHTML = currentBook.title;
+
+
+    myLibrary.addBookToLibrary(currentBook);
+    myLibrary.printAllBooks();
+
     
-    printAllBooks(myLibrary);
-});
-
-
-
-function printAllBooks(myLibrary){
-    for(let i = 0; i < myLibrary.length; i++) {
-        console.log( myLibrary[i].author );
-        console.log( myLibrary[i].title );
-        console.log("- - - -")
-    }
 }
