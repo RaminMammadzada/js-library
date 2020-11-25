@@ -83,6 +83,8 @@ function displayTable() {
     myLibrary.books.forEach((book, index) =>{  
         insertRow(book);
     });
+
+    // console.log(myLibrary)
 }
 
 function insertHead(){
@@ -109,9 +111,40 @@ function insertRow(book) {
     const cell2 = row.insertCell(2);
     const cell3 = row.insertCell(3);
     const deleteButton= row.insertCell(4);
+
     cell0.innerHTML = book.title;
     cell1.innerHTML = book.author;
     cell2.innerHTML = book.pages;
-    cell3.innerHTML = book.isRead;
+    createIsRead(cell3, book);
     deleteButton.innerHTML = `<button onclick="removeBook(${book.id})"> Delete</button>`;
+}
+
+
+function createIsRead(cell3, currentBook) {
+
+    var isReadCheckbox = document.createElement("INPUT");
+    isReadCheckbox.setAttribute("type", "checkbox");
+    isReadCheckbox.setAttribute("id", "is_read");
+    isReadCheckbox.checked = currentBook.isRead;
+    cell3.appendChild(isReadCheckbox);
+
+    updateIsRead(cell3, currentBook);
+    
+}
+
+function updateIsRead(cell3, currentBook) {
+    cell3.onclick = () => {
+        const currentBookIndex = myLibrary.books.findIndex(book => book.id === currentBook.id); 
+ 
+        if (currentBook.isRead === true) {
+            cell3.firstChild.checked === false;
+            myLibrary.books[currentBookIndex ].isRead = false;
+        }
+        else {
+            cell3.firstChild.checked === true;
+            myLibrary.books[currentBookIndex].isRead = true;
+        }
+
+        console.log(myLibrary.books)
+    }
 }
