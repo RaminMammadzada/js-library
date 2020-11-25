@@ -68,13 +68,14 @@ function removeTableElements(){
     }
 }
 
-function removeBook(book){
-    const findBook = myLibrary.findBook(book);
-    myLibrary.splice(findBook, 1);
-    // alert('deleted!')
-    // displayTable();
 
+function removeBook(id){ 
+    const findBook = myLibrary.books.findIndex(book => book.id === id);    
+    myLibrary.books.splice(findBook, 1);    
+    removeTableElements();
+    displayTable();    
 }
+
 function displayTable() {
     
     insertHead();
@@ -96,10 +97,11 @@ function insertHead(){
     const cell5 = row1.insertCell(3);
     cell5.innerHTML = "<b>isRead</b>";
     const cell6 = row1.insertCell(4);
-    cell6.innerHTML = "<b>Delete</b>";
+    cell6.innerHTML = "<b>Action</b>";
 
 }
-function insertRow(book){
+
+function insertRow(book) {
     const table = document.getElementById('myTable');
     const row = table.insertRow(1);
     const cell0 = row.insertCell(0);
@@ -111,7 +113,5 @@ function insertRow(book){
     cell1.innerHTML = book.author;
     cell2.innerHTML = book.pages;
     cell3.innerHTML = book.isRead;
-    deleteButton.innerHTML = `<button onclick="removeTableElements()"> Delete</button>`;
-
-};
-
+    deleteButton.innerHTML = `<button onclick="removeBook(${book.id})"> Delete</button>`;
+}
