@@ -5,7 +5,6 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.isRead = isRead;
-        // id +=1;
     }
 }
 
@@ -16,7 +15,6 @@ class Library{
 
     addBookToLibrary(book) {
         this.books.push(book);
-        // alert(`I am adding book with title ${book.title}.`)
     }
 
     printAllBooks(){
@@ -29,13 +27,6 @@ class Library{
 }
 
 let myLibrary = new Library();
-// let id = 0;
-// let newBook1 = new Book("Javascript", "Prof. Ramin, Prof. Peris", 34)
-// myLibrary.addBookToLibrary(newBook1);
-// let newBook2 = new Book("Python", "Prof. Muge, Prof. Peris")
-// myLibrary.addBookToLibrary(newBook2);
-
-
 let id = 0;
 
 let submitButton = document.getElementById("my_button");
@@ -45,19 +36,14 @@ submitButton.onclick = function() {
     let bookAuthorView = document.getElementById("book_author");
     let bookPagesView = document.getElementById('book_pages');
     let bookIsReadView = document.getElementById('book_isread').checked;
-    // let deleteButton = document.createElement('div');
-    
+   
     let currentBook = new Book(id, bookTitleView.value, bookAuthorView.value, bookPagesView.value, bookIsReadView);
    
     myLibrary.addBookToLibrary(currentBook);  
-    // deleteButton.innerHTML = 
 
     removeTableElements();
     displayTable()
 
-      
-    // myLibrary.printAllBooks();
-    // console.log(myLibrary);
 }
 
 function removeTableElements(){
@@ -83,8 +69,6 @@ function displayTable() {
     myLibrary.books.forEach((book, index) =>{  
         insertRow(book);
     });
-
-    // console.log(myLibrary)
 }
 
 function insertHead(){
