@@ -23,7 +23,7 @@ In this project we created a simple library using javascript
 
 ## Live Demo
 
-[Live Demo Link](https://repl.it/@remki/ruby-tic-tac-toe-game-1#bin/main.a)
+[Live Demo Link](https://raminmammadzada.github.io/js-library/)
 
 ## Getting Started
 
