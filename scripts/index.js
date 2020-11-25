@@ -1,9 +1,11 @@
 class Book {
-    constructor(title, author, pages, isRead){
+    constructor(id, title, author, pages, isRead){
+        this.id = id
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.isRead = isRead;
+        // id +=1;
     }
 }
 
@@ -27,44 +29,52 @@ class Library{
 }
 
 let myLibrary = new Library();
-
+// let id = 0;
 // let newBook1 = new Book("Javascript", "Prof. Ramin, Prof. Peris", 34)
 // myLibrary.addBookToLibrary(newBook1);
 // let newBook2 = new Book("Python", "Prof. Muge, Prof. Peris")
 // myLibrary.addBookToLibrary(newBook2);
 
 
-
+let id = 0;
 
 let submitButton = document.getElementById("my_button");
 submitButton.onclick = function() {
+    id+=1;
     let bookTitleView = document.getElementById("book_title");
     let bookAuthorView = document.getElementById("book_author");
     let bookPagesView = document.getElementById('book_pages');
     let bookIsReadView = document.getElementById('book_isread').checked;
-
-    console.log(`HERE is ISREAD: ${bookIsReadView}`);
-    let currentBook = new Book(bookTitleView.value, bookAuthorView.value, bookPagesView.value, bookIsReadView);
+    // let deleteButton = document.createElement('div');
+    
+    let currentBook = new Book(id, bookTitleView.value, bookAuthorView.value, bookPagesView.value, bookIsReadView);
    
     myLibrary.addBookToLibrary(currentBook);  
+    // deleteButton.innerHTML = 
 
     removeTableElements();
     displayTable()
 
-  
+      
     // myLibrary.printAllBooks();
     // console.log(myLibrary);
 }
 
 function removeTableElements(){
-    const table1 = document.getElementById('myTable');  
+    const table1 = document.getElementById('myTable');
     console.log(table1)
-
     if(table1 !== null) {
         table1.removeChild(table1.firstChild);
     }
 }
 
+function removeBook(book){
+    const findBook = myLibrary.findBook(book);
+    myLibrary.splice(findBook, 1);
+    // alert('deleted!')
+    // displayTable();
+
+}
 function displayTable() {
     
     insertHead();
@@ -85,6 +95,8 @@ function insertHead(){
     cell4.innerHTML = "<b>Pages</b>";
     const cell5 = row1.insertCell(3);
     cell5.innerHTML = "<b>isRead</b>";
+    const cell6 = row1.insertCell(4);
+    cell6.innerHTML = "<b>Delete</b>";
 
 }
 function insertRow(book){
@@ -94,9 +106,12 @@ function insertRow(book){
     const cell1 = row.insertCell(1);
     const cell2 = row.insertCell(2);
     const cell3 = row.insertCell(3);
+    const deleteButton= row.insertCell(4);
     cell0.innerHTML = book.title;
     cell1.innerHTML = book.author;
     cell2.innerHTML = book.pages;
     cell3.innerHTML = book.isRead;
+    deleteButton.innerHTML = `<button onclick="removeTableElements()"> Delete</button>`;
+
 };
 
