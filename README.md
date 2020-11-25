@@ -4,9 +4,7 @@ Microverse JS Project#1 -> JS Library
 
 # JS- LIBRARY
 
-![screenshot](./images/output.png)
-
-In this project we created a simple library using javascript
+In this project we created a simple library using javascript and finished the following milestones:
 
 - [x] Miltestone 1 - Basic initial setups and linter configurations.
 - [x] Miltestone 2 - Set the project with skeleton HTML/CSS and JS files.
@@ -14,7 +12,12 @@ In this project we created a simple library using javascript
 - [x] Miltestone 4 - Write a function that loops through the array and displays each book on the page
 - [x] Miltestone 5 - Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book
 - [x] Miltestone 6 - Add a button on each book’s display to remove the book from the library
-- [x] Miltestone 5 - Add a button on each book’s display to change its `read` status
+- [x] Miltestone 7 - Add a button on each book’s display to change its `read` status
+
+
+
+![screenshot](./images/screenshot.png)
+[The screenshot of the page]
 
 ## Built With
 
@@ -28,10 +31,9 @@ In this project we created a simple library using javascript
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
-
-- [x] run `git clone https://github.com/RaminMammadzada/js-library.git` on your terminal
-- [x] cd into project folder `cd js-library`
-- [x] Run the `index.html` file using your favorite browser
+- Clone the repository by runing `git clone https://github.com/RaminMammadzada/js-library.git` on your terminal
+- cd into project folder `cd js-library`
+- Open the `index.html` file using your favorite browser
 
 
 ## Authors
