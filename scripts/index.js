@@ -43,30 +43,30 @@ submitButton.onclick = () => {
   displayTable();
 };
 
-function removeTableElements() {
+const removeTableElements = () => {
   const table1 = document.getElementById('myTable');
   if (table1 !== null) {
     table1.removeChild(table1.firstChild);
   }
-}
+};
 
 
-function removeBook(id) {
+const removeBook = id => {
   const findBook = myLibrary.books.findIndex(book => book.id === id);
   myLibrary.books.splice(findBook, 1);
   removeTableElements();
   displayTable();
-}
+};
 
-function displayTable() {
+const displayTable = () => {
   insertHead();
 
   myLibrary.books.forEach((book) => {
     insertRow(book);
   });
-}
+};
 
-function insertHead() {
+const insertHead = () => {
   const table1 = document.getElementById('myTable');
   const row1 = table1.insertRow(0);
   const cell2 = row1.insertCell(0);
@@ -79,9 +79,9 @@ function insertHead() {
   cell5.innerHTML = '<b>isRead</b>';
   const cell6 = row1.insertCell(4);
   cell6.innerHTML = '<b>Action</b>';
-}
+};
 
-function insertRow(book) {
+const insertRow = (book) => {
   const table = document.getElementById('myTable');
   const row = table.insertRow(1);
   const cell0 = row.insertCell(0);
@@ -98,10 +98,10 @@ function insertRow(book) {
   deleteButton.onclick = () => {
     removeBook(book.id);
   };
-}
+};
 
 
-function createIsRead(cell3, currentBook) {
+const createIsRead = (cell3, currentBook) => {
   const isReadCheckbox = document.createElement('INPUT');
   isReadCheckbox.setAttribute('type', 'checkbox');
   isReadCheckbox.setAttribute('id', 'is_read');
@@ -109,9 +109,9 @@ function createIsRead(cell3, currentBook) {
   cell3.appendChild(isReadCheckbox);
 
   updateIsRead(cell3, currentBook);
-}
+};
 
-function updateIsRead(cell3, currentBook) {
+const updateIsRead = (cell3, currentBook) => {
   cell3.onclick = () => {
     const currentBookIndex = myLibrary.books.findIndex(book => book.id === currentBook.id);
 
@@ -121,4 +121,4 @@ function updateIsRead(cell3, currentBook) {
       myLibrary.books[currentBookIndex].isRead = true;
     }
   };
-}
+};
