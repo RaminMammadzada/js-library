@@ -28,12 +28,19 @@ submitButton.onclick = () => {
   const inputs = [];
   const bookTitleView = document.getElementById('book_title');
   inputs.push(bookTitleView.value);
+  bookTitleView.value = "";
+
   const bookAuthorView = document.getElementById('book_author');
   inputs.push(bookAuthorView.value);
+  bookAuthorView.value = "";
+
   const bookPagesView = document.getElementById('book_pages');
   inputs.push(bookPagesView.value);
+  bookPagesView.value = 0;
+
   const bookIsReadView = document.getElementById('book_isread').checked;
   inputs.push(bookIsReadView);
+  bookIsReadView.value = false;
 
   const currentBook = new Book(id, inputs[0], inputs[1], inputs[2], inputs[3]);
 
