@@ -18,12 +18,15 @@ class Library {
     const regex = /^[0-9]+$/;
     if (book.title !== '' && book.author !== '' && book.pages.match(regex)) {
       this.books.push(book);
+      saveLocal(); 
+  
     } else {
       alert('Fill in all the fields and pages should be more than 0');
       return false;
-    }
-    return true;
+    }    
+    return true;    
   }
+  
 }
 
 const myLibrary = new Library();
@@ -54,10 +57,9 @@ submitButton.onclick = () => {
   const currentBook = new Book(id, inputs[0], inputs[1], inputs[2], inputs[3]);
 
   myLibrary.addBookToLibrary(currentBook);
-
-
   removeTableElements();
   displayTable();
+
 };
 
 const removeTableElements = () => {
@@ -126,6 +128,7 @@ const createIsRead = (cell3, currentBook) => {
   cell3.appendChild(isReadCheckbox);
 
   updateIsRead(cell3, currentBook);
+  
 };
 
 const updateIsRead = (cell3, currentBook) => {
@@ -137,5 +140,12 @@ const updateIsRead = (cell3, currentBook) => {
     } else {
       myLibrary.books[currentBookIndex].isRead = true;
     }
+     saveLocal();
   };
 };
+
+const saveLocal= () =>{
+  console.log(localStorage.setItem('myLibrary', JSON.stringify(myLibrary)))
+};
+
+displayTable();
