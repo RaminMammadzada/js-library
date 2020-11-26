@@ -18,26 +18,22 @@ class Library {
     const regex = /^[0-9]+$/;
     if (book.title !== '' && book.author !== '' && book.pages.match(regex)) {
       this.books.push(book);
-      saveLocal(); 
-  
+      saveLocal();
     } else {
       alert('Fill in all the fields and pages should be more than 0');
       return false;
-    }    
+    }
     return true;
   }
-  
 }
 
 
-let lastVersionOfMyLibrary = JSON.parse( localStorage.getItem('myLibrary') );
+const lastVersionOfMyLibrary = JSON.parse(localStorage.getItem('myLibrary'));
 let myLibrary = null;
 
-if (lastVersionOfMyLibrary !== null){
-  console.log(lastVersionOfMyLibrary);
+if (lastVersionOfMyLibrary !== null) {
   myLibrary = new Library(lastVersionOfMyLibrary.books);
-}
-else {
+} else {
   myLibrary = new Library();
 }
 
@@ -70,7 +66,6 @@ submitButton.onclick = () => {
   myLibrary.addBookToLibrary(currentBook);
   removeTableElements();
   displayTable();
-
 };
 
 const removeTableElements = () => {
@@ -140,7 +135,6 @@ const createIsRead = (cell3, currentBook) => {
   cell3.appendChild(isReadCheckbox);
 
   updateIsRead(cell3, currentBook);
-  
 };
 
 const updateIsRead = (cell3, currentBook) => {
@@ -152,12 +146,11 @@ const updateIsRead = (cell3, currentBook) => {
     } else {
       myLibrary.books[currentBookIndex].isRead = true;
     }
-     saveLocal();
-     console.log(myLibrary)
+    saveLocal();
   };
 };
 
-const saveLocal= () =>{
+const saveLocal = () => {
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 };
 
