@@ -10,8 +10,8 @@ class Book {
 }
 
 class Library {
-  constructor() {
-    this.books = [];
+  constructor(lastVersionOfMyLibrary = []) {
+    this.books = lastVersionOfMyLibrary;
   }
 
   addBookToLibrary(book) {
@@ -24,12 +24,23 @@ class Library {
       alert('Fill in all the fields and pages should be more than 0');
       return false;
     }    
-    return true;    
+    return true;
   }
   
 }
 
-const myLibrary = new Library();
+
+let lastVersionOfMyLibrary = JSON.parse( localStorage.getItem('myLibrary') );
+let myLibrary = null;
+
+if (lastVersionOfMyLibrary !== null){
+  console.log(lastVersionOfMyLibrary);
+  myLibrary = new Library(lastVersionOfMyLibrary.books);
+}
+else {
+  myLibrary = new Library();
+}
+
 let id = 0;
 
 const submitButton = document.getElementById('my_button');
@@ -73,6 +84,7 @@ const removeTableElements = () => {
 const removeBook = id => {
   const findBook = myLibrary.books.findIndex(book => book.id === id);
   myLibrary.books.splice(findBook, 1);
+  saveLocal();
   removeTableElements();
   displayTable();
 };
@@ -141,11 +153,13 @@ const updateIsRead = (cell3, currentBook) => {
       myLibrary.books[currentBookIndex].isRead = true;
     }
      saveLocal();
+     console.log(myLibrary)
   };
 };
 
 const saveLocal= () =>{
-  console.log(localStorage.setItem('myLibrary', JSON.stringify(myLibrary)))
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 };
 
+removeTableElements();
 displayTable();
