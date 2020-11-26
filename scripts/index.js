@@ -15,7 +15,14 @@ class Library {
   }
 
   addBookToLibrary(book) {
-    this.books.push(book);
+    const regex = /^[0-9]+$/;
+    if (book.title !== '' && book.author !== '' && book.pages.match(regex)) {
+      this.books.push(book);
+    } else {
+      alert('Fill in all the fields and pages should be more than 0');
+      return false;
+    }
+    return true;
   }
 }
 
@@ -25,14 +32,16 @@ let id = 0;
 const submitButton = document.getElementById('my_button');
 submitButton.onclick = () => {
   id += 1;
+
   const inputs = [];
+
   const bookTitleView = document.getElementById('book_title');
   inputs.push(bookTitleView.value);
-  bookTitleView.value = "";
+  bookTitleView.value = '';
 
   const bookAuthorView = document.getElementById('book_author');
   inputs.push(bookAuthorView.value);
-  bookAuthorView.value = "";
+  bookAuthorView.value = '';
 
   const bookPagesView = document.getElementById('book_pages');
   inputs.push(bookPagesView.value);
@@ -45,6 +54,7 @@ submitButton.onclick = () => {
   const currentBook = new Book(id, inputs[0], inputs[1], inputs[2], inputs[3]);
 
   myLibrary.addBookToLibrary(currentBook);
+
 
   removeTableElements();
   displayTable();
