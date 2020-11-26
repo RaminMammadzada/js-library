@@ -1,9 +1,71 @@
-# js-library
-Microverse School > Javascript > Library v1.1
+![](https://img.shields.io/badge/Microverse-blueviolet)
+
+Microverse JS Project#1 -> JS Library
+
+# JS- LIBRARY
+
+In this project we created a simple library using javascript and finished the following milestones:
+
+- [x] Miltestone 1 - Basic initial setups and linter configurations.
+- [x] Miltestone 2 - Set the project with skeleton HTML/CSS and JS files.
+- [x] Miltestone 3 - Add a function to the script that can take user’s input and store the new book objects into an array..
+- [x] Miltestone 4 - Write a function that loops through the array and displays each book on the page
+- [x] Miltestone 5 - Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book
+- [x] Miltestone 6 - Add a button on each book’s display to remove the book from the library
+- [x] Miltestone 7 - Add a button on each book’s display to change its `read` status
 
 
-## AUthor
-Ramin
-Peris
 
-# Updated again by Ramin.
+![screenshot](./images/screenshot.png)
+[The screenshot of the page]
+
+## Built With
+
+- Bootstrap
+- Javascript
+
+## Live Demo
+
+[Live Demo Link](https://raminmammadzada.github.io/js-library/)
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+- Clone the repository by runing `git clone https://github.com/RaminMammadzada/js-library.git` on your terminal
+- cd into project folder `cd js-library`
+- Open the `index.html` file using your favorite browser
+
+
+## Authors
+
+👤 **Ramin Mammadzada**
+
+- Github: [@RaminMammadzada](https://github.com/RaminMammadzada)
+- Twitter: [@RaminMammadzada](https://twitter.com/RaminMammadzada)
+- Linkedin: [@RaminMammadzada](https://www.linkedin.com/in/raminmammadzada) 
+
+👤 **Peris Ndanu**
+
+- Github: [@githubhandle](https://github.com/mimipeshy)
+- Twitter: [@twitterhandle](https://twitter.com/pygirl254)
+- Linkedin: [linkedin](https://linkedin.com/peris-ndanu-405083193//)
+
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+- Odin project
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
