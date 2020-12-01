@@ -18,7 +18,7 @@ class Library {
     const regex = /^[0-9]+$/;
     if (book.title !== '' && book.author !== '' && book.pages.match(regex)) {
       this.books.push(book);
-      saveLocal();
+      updateLocalstorage();
     } else {
       alert('Fill in all the fields and pages should be more than 0');
       return false;
@@ -79,7 +79,7 @@ const removeTableElements = () => {
 const removeBook = id => {
   const findBook = myLibrary.books.findIndex(book => book.id === id);
   myLibrary.books.splice(findBook, 1);
-  saveLocal();
+  updateLocalstorage();
   removeTableElements();
   displayTable();
 };
@@ -146,11 +146,11 @@ const updateIsRead = (cell3, currentBook) => {
     } else {
       myLibrary.books[currentBookIndex].isRead = true;
     }
-    saveLocal();
+    updateLocalstorage();
   };
 };
 
-const saveLocal = () => {
+const updateLocalstorage = () => {
   localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 };
 
